@@ -1,0 +1,72 @@
+<% if notice %>
+<div class="alert alert-info notice" role="alert">
+  <p><%= notice %></p>
+</div>
+<% end %>
+<% if alert %>
+<div class="alert alert-info" role="alert">
+  <p><%= alert %></p>
+</div>
+<% end %>
+<script type="text/javascript">
+  $('.alert').delay(2000).slideUp();
+</script>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <% if user_signed_in? %>
+        <a class="navbar-brand" href="#welcome">
+      <% else %>
+        <a class="navbar-brand" href="/">
+      <% end %>
+        bootstrap-rails-devise-marionette
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+          <li class="active">
+            <%= link_to "Welcome", root_path + "#welcome" %>
+          </li>
+          <% else %>
+          <li class="active"><%= link_to "Home", root_path + "#home" %></li>
+          <% end %>
+          <li>
+            <%= link_to "About", root_path + "#about" %>
+          </li>
+          <li>
+            <%= link_to "Contact", root_path + "#contact" %>
+          </li>
+      </ul>
+      <script type="text/javascript">
+          $('li').click(function(event) {
+            var $li = $(event.currentTarget);
+            $('li').removeClass('active');
+            $li.addClass('active');
+          });
+          $('.navbar-brand').click(function(event) {
+            var $el = $(event.currentTarget);
+            $('li').removeClass('active');
+            $('li').first().addClass('active');
+          });
+      </script>
+      <div class="user-actions pull-right">
+        <%= render 'devise/menu/registration' %>
+        <%= render 'devise/menu/login' %>
+      </div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div id="content"></div>
+<footer>
+<p>Footer</p>
+</footer>
