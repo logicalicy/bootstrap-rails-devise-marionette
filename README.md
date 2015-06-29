@@ -1,6 +1,6 @@
 # Bootstrap Rails Devise Marionette App
 
-Rails web application with Devise authentication, Marionette client and Bootstrap styling.
+Rails web application with Devise authentication, Marionette client and Bootstrap styling. Clone this project to quickly kick start a web application for a pet project or hackathon.
 
 ## Screenshot
 
